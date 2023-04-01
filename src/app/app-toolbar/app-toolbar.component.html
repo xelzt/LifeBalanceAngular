@@ -1,0 +1,18 @@
+<mat-toolbar>
+    <span id="logo"><a href="">Life Balance</a></span>
+
+    <div id="toolbar_buttons">
+        <button class="toolbar_button" mat-button [matMenuTriggerFor]="meal_menu">Posiłki</button>
+        <mat-menu #meal_menu="matMenu">
+        <button mat-menu-item [routerLink]="'add_meal'">Dodaj posiłek</button>
+        <button mat-menu-item>Przeglądaj posiłki</button>
+        </mat-menu>
+
+        <button class="toolbar_button" mat-button [matMenuTriggerFor]="recipe_menu">Przepisy</button>
+        <mat-menu #recipe_menu="matMenu">
+        <button mat-menu-item [routerLink]="'add_recipe'">Dodaj przepis</button>
+        <button mat-menu-item [routerLink]="'view_recipes'">Przeglądaj przepisy</button>
+        </mat-menu>
+    </div>
+
+</mat-toolbar>

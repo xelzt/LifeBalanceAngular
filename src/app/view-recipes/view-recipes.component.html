@@ -1,0 +1,17 @@
+<h1>Dostępne przepisy</h1>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of recipes">
+        <td>{{ item.recipe_id }}</td>
+        <td>{{ item.recipe_name }}</td>
+        <td>{{ item.recipe_portions }}</td>
+      </tr>
+    </tbody>
+  </table>

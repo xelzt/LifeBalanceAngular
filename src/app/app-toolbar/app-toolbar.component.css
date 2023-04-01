@@ -1,0 +1,16 @@
+mat-toolbar{
+    display: flex;
+}
+
+#toolbar_buttons{
+    margin-left: 3%;
+}
+
+.toolbar_button{
+    margin-left: 10%;
+}
+
+a:link, a:visited{
+    text-decoration: none;
+    color: white;
+}
