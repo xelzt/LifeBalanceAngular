@@ -19,14 +19,20 @@ export class RecipesComponent{
 
   recipes: any;
 
+  recipes_types: any[] = [
+    {value: 'breakfast', viewValue: 'śniadanie'},
+    {value: 'dinner', viewValue: 'obiad'},
+    {value: 'supper', viewValue: 'kolacja'},
+  ];
+
   recipeForm = this.fb.group({
-    recipeName: ['', Validators.required],
-    recipeType: ['', Validators.required],
-    portionsAmount: ['', Validators.required],
+    recipeName: ['', [Validators.required, Validators.minLength(3)]],
+    recipeType: [this.recipes_types, Validators.required],
+    portionsAmount: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.max(50)]],
     ingredients: this.fb.array([this.fb.group({
-      name: ["", Validators.required],
-      amount: ["", Validators.required],
-      unit: ["", Validators.required],
+      name: ["", [Validators.required, Validators.minLength(3)]],
+      amount: ["", [Validators.required, , Validators.pattern("^[0-9]*$")]],
+      unit: [this.units, Validators.required],
     })]),
     steps: this.fb.array([this.fb.group({
       description: ["", Validators.required]
@@ -42,11 +48,6 @@ export class RecipesComponent{
   }
 
   onSubmit(data: any) {
-    // for (let i = 0; i < this.recipeForm.get('ingredients')!.value.length; i++) {
-    //   const ingredient = this.recipeForm.get('ingredients')!.value.at(i);
-    //   console.log(ingredient?.name);
-    // }
-    // this.http.post("/form", this.recipeForm);
     this.http.post('http://localhost:3000/add_new_recipe', data).subscribe(response => {
       console.log(response);
     });
@@ -81,10 +82,6 @@ export class RecipesComponent{
 
   deleteStep(stepIndex: number) {
     this.steps.removeAt(stepIndex);
-  }
-
-  checkIfRecipeIsAlreadyInDatabase(){
-    
   }
 
 }

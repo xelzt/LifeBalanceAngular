@@ -3,15 +3,13 @@
   <label for="recipeName">Nazwa przepisu: </label>
   <input id="recipeName" type="text" formControlName="recipeName">
 
-  <h4>Jednostki</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>Wybierz jednostkę</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let unit of units" [value]="unit.value">
-        {{unit.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <label for="recipeType">Typ dania: </label>
+  <select formControlName="recipeType">
+    <option value="" disabled>Wybierz typ dania</option>
+    <option *ngFor="let type of recipes_types" [ngValue]="type.value">
+        {{type.viewValue}}
+    </option>   
+  </select>
 
   <label for="portionsAmount">Ilość porcji: </label>
   <input id="portionsAmount" type="number" formControlName="portionsAmount">
@@ -24,10 +22,15 @@
         <input id="ingredientName-{{i}}" type="text" formControlName="name">
 
         <label for="ingredientAmount-{{i}}">Ilość: </label>
-        <input id="ingredientAmount-{{i}}" type="text" formControlName="amount">
+        <input id="ingredientAmount-{{i}}" type="number" formControlName="amount">
 
         <label for="ingredientUnit-{{i}}">Jednostka: </label>
-        <input id="ingredientUnit-{{i}}" type="text" formControlName="unit">
+        <select formControlName="unit">
+          <option value="" disabled>Wybierz jednostkę</option>
+          <option *ngFor="let unit of units" [ngValue]="unit.value">
+              {{unit.viewValue}}
+          </option>   
+        </select>
  
       </div>
     </div>
