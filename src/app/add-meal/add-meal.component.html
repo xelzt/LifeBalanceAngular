@@ -1,0 +1,19 @@
+<form action="POST" [formGroup]="mealForm" (ngSubmit)="onSubmit()">
+
+    <label for="mealName">Nazwa posiłku: </label>
+    <input type="text" id="mealName" formControlName="mealName">
+
+    <label for="mealDate">Data posiłku: </label>
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+      
+
+    <label for="mealHour">Godzina posiłku: </label>
+    <input type="time" id="mealHour" formControlName="mealHour">
+
+</form>
