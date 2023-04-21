@@ -15,7 +15,7 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'TRIBLema321!',
+  password: 'example',
   database: 'life_balance',
   port: 4200
 });
@@ -61,9 +61,17 @@ app.get('/get_data/:data', (req, res) => {
 
 
 app.post('/add_new_recipe', async (req, res) => {
-  const { name, age, email } = req.body;
 
+  var ingredients;
+  connection.query("SELECT * FROM `ingredient` WHERE `ingredient_name`=`tikka masala`", (err, rows) => {
+    if (err) throw err;
+    ingredients = rows;
+  });
+
+  console.log(this.ingredients);
+  recipeName = req.body["recipeName"].toLowerCase();
   
-  res.json({ message: 'Data received xdd' });
+  
+  res.json({ message: 'Data received' });
 });
 
